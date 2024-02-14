@@ -11,8 +11,6 @@
 		5D2C6F0D2B7CE5DA00A80550 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C6F0C2B7CE5DA00A80550 /* ContentView.swift */; };
 		5D2C6F0F2B7CE5DD00A80550 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D2C6F0E2B7CE5DD00A80550 /* Assets.xcassets */; };
 		5D2C6F122B7CE5DD00A80550 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D2C6F112B7CE5DD00A80550 /* Preview Assets.xcassets */; };
-		5D2C6F192B7CE7FC00A80550 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C6F182B7CE7FC00A80550 /* PostRow.swift */; };
-		5D2C6F1B2B7CEB9E00A80550 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C6F1A2B7CEB9E00A80550 /* PostList.swift */; };
 		5D2C6F1D2B7CF70A00A80550 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C6F1C2B7CF70A00A80550 /* Post.swift */; };
 		5D2C6F212B7CFAD400A80550 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D2C6F202B7CFAD300A80550 /* GoogleService-Info.plist */; };
 		5D2C6F242B7CFBA300A80550 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5D2C6F232B7CFBA300A80550 /* FirebaseAnalytics */; };
@@ -22,6 +20,7 @@
 		5D2C6F2C2B7CFBA300A80550 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 5D2C6F2B2B7CFBA300A80550 /* FirebaseAppCheck */; };
 		5D2C6F2F2B7CFD7A00A80550 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D2C6F2E2B7CFD7A00A80550 /* FirebaseFirestore */; };
 		5D2C6F312B7D038500A80550 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5D2C6F302B7D038500A80550 /* FirebaseFirestoreSwift */; };
+		5D2C6F332B7D181300A80550 /* NewPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C6F322B7D181300A80550 /* NewPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +29,9 @@
 		5D2C6F0C2B7CE5DA00A80550 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5D2C6F0E2B7CE5DD00A80550 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D2C6F112B7CE5DD00A80550 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5D2C6F182B7CE7FC00A80550 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
-		5D2C6F1A2B7CEB9E00A80550 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		5D2C6F1C2B7CF70A00A80550 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5D2C6F202B7CFAD300A80550 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5D2C6F322B7D181300A80550 /* NewPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +74,8 @@
 			children = (
 				5D2C6F202B7CFAD300A80550 /* GoogleService-Info.plist */,
 				5D2C6F0A2B7CE5DA00A80550 /* _75App.swift */,
-				5D2C6F182B7CE7FC00A80550 /* PostRow.swift */,
-				5D2C6F1A2B7CEB9E00A80550 /* PostList.swift */,
 				5D2C6F1C2B7CF70A00A80550 /* Post.swift */,
+				5D2C6F322B7D181300A80550 /* NewPost.swift */,
 				5D2C6F0C2B7CE5DA00A80550 /* ContentView.swift */,
 				5D2C6F0E2B7CE5DD00A80550 /* Assets.xcassets */,
 				5D2C6F102B7CE5DD00A80550 /* Preview Content */,
@@ -184,10 +181,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D2C6F332B7D181300A80550 /* NewPost.swift in Sources */,
 				5D2C6F0D2B7CE5DA00A80550 /* ContentView.swift in Sources */,
-				5D2C6F192B7CE7FC00A80550 /* PostRow.swift in Sources */,
 				5D2C6F0B2B7CE5DA00A80550 /* _75App.swift in Sources */,
-				5D2C6F1B2B7CEB9E00A80550 /* PostList.swift in Sources */,
 				5D2C6F1D2B7CF70A00A80550 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
