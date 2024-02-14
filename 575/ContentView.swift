@@ -6,16 +6,37 @@
 //
 
 import SwiftUI
+import FirebaseFirestoreSwift
 
 struct ContentView: View {
+    @FirestoreQuery(collectionPath: "posts") var posts: [Post]
+    @State private var showingNewPostSheet = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationSplitView {
+            List {
+                ForEach(posts) {post in
+                    HStack{
+                        Text(post.post1)
+                        Text(post.post2)
+                        Text(post.post3)
+                    }.font(.body)
+                }
+            }
+            .navigationTitle("575s")
+            .toolbar {
+                Button {
+                    showingNewPostSheet.toggle()
+                } label: {
+                    Text("Post")
+                }
+            }
+            .sheet(isPresented: $showingNewPostSheet) {
+                NewPost()
+            }
+        } detail: {
+            Text("Posts")
         }
-        .padding()
     }
 }
 
