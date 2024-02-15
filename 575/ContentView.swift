@@ -22,7 +22,8 @@ struct ContentView: View {
                         Text(post.post2)
                         Text(post.post3)
                     }.font(.body)
-                }.onDelete(perform: deletePost)
+                }
+//                .onDelete(perform: deletePost)
             }
             .navigationTitle("575s")
             .toolbar {

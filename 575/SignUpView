@@ -1,0 +1,24 @@
+//
+//  SignInView.swift
+//  575
+//
+//  Created by Yuki Nishimi on 2024/02/16.
+//
+
+import SwiftUI
+import FirebaseCore
+import FirebaseAuth
+
+struct SignInView: View {
+    @State private var email: String = ""
+    @State private var password: String = ""
+
+    
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+#Preview {
+    SignUpView()
+}
