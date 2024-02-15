@@ -10,7 +10,7 @@ import Foundation
 import FirebaseFirestoreSwift
 
 struct Post: Codable, Identifiable {
-    @DocumentID var id: String?
+    @DocumentID var id: String? = UUID().uuidString
     var user: String
     var post1: String
     var post2: String

@@ -12,6 +12,25 @@ struct NewPost: View {
     @State var newPost: Post = Post(user: "", post1: "", post2: "", post3: "", description: "")
     @Environment(\.dismiss) var dismiss
     
+    var body: some View {
+        VStack {
+            Form {
+                Section {
+                    TextField("5", text: $newPost.post1)
+                    TextField("7", text: $newPost.post2)
+                    TextField("5", text: $newPost.post3)
+                }
+                Section {
+                    Button("Post") {
+                        addPost(post: newPost)
+                        dismiss()
+                    }.disabled(newPost.post1.isEmpty || newPost.post2.isEmpty || newPost.post3.isEmpty)
+                }
+            }
+
+        }
+    }
+    
     func addPost(post: Post) {
         let db = Firestore.firestore()
         let collectionRef = db.collection("posts")
@@ -22,22 +41,6 @@ struct NewPost: View {
         catch {
             print(error)
         }
-    }
-    
-    var body: some View {
-
-        VStack {
-            TextField("5", text: $newPost.post1)
-                .padding(.all)
-            TextField("7", text: $newPost.post2)
-                .padding(.all)
-            TextField("5", text: $newPost.post3)
-                .padding(.all)
-            Button("Post") {
-                addPost(post: newPost)
-                dismiss()
-            }
-        }.navigationTitle("New Post")
     }
 }
 

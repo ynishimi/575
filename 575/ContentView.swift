@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 import FirebaseFirestoreSwift
 
 struct ContentView: View {
@@ -21,7 +22,7 @@ struct ContentView: View {
                         Text(post.post2)
                         Text(post.post3)
                     }.font(.body)
-                }
+                }.onDelete(perform: deletePost)
             }
             .navigationTitle("575s")
             .toolbar {
@@ -37,6 +38,15 @@ struct ContentView: View {
         } detail: {
             Text("Posts")
         }
+    }
+    
+    func deletePost(postsIndex: IndexSet) {
+//        削除機能を追加する
+        
+//        let db = Firestore.firestore()
+//        for index in postsIndex {
+//            db.collection("posts")[index].delete()
+//        }
     }
 }
 
