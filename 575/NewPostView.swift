@@ -1,5 +1,5 @@
 //
-//  NewPost.swift
+//  NewPostView.swift
 //  575
 //
 //  Created by Yuki Nishimi on 2024/02/15.

@@ -2,54 +2,48 @@
 //  ContentView.swift
 //  575
 //
-//  Created by Yuki Nishimi on 2024/02/14.
+//  Created by Yuki Nishimi on 2024/02/16.
 //
 
 import SwiftUI
-import Firebase
-import FirebaseFirestoreSwift
+import FirebaseAuth
 
 struct ContentView: View {
-    @FirestoreQuery(collectionPath: "posts") var posts: [Post]
-    @State private var showingNewPostSheet = false
+//    UserAuthクラス
+//    @EnvironmentObject var userAuth: UserAuth
     
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(posts) {post in
-                    HStack{
-                        Text(post.post1)
-                        Text(post.post2)
-                        Text(post.post3)
-                    }.font(.body)
-                }
-//                .onDelete(perform: deletePost)
+        Group {
+        if Auth.auth().currentUser != nil {
+                PostView()
             }
-            .navigationTitle("575s")
-            .toolbar {
-                Button {
-                    showingNewPostSheet.toggle()
-                } label: {
-                    Text("Post")
-                }
+            else {
+                LoginView()
             }
-            .sheet(isPresented: $showingNewPostSheet) {
-                NewPost()
-            }
-        } detail: {
-            Text("Posts")
         }
     }
-    
-    func deletePost(postsIndex: IndexSet) {
-//        削除機能を追加する
-        
-//        let db = Firestore.firestore()
-//        for index in postsIndex {
-//            db.collection("posts")[index].delete()
-//        }
-    }
 }
+
+//  ログイン状況を管理する。@EnvironmentObjectを使う。
+//class UserAuth: ObservableObject {
+//    @Published var isLoggedIn: Bool = false
+//    @Published var user: User?
+//    
+//    init() {
+//        Auth.auth().addStateDidChangeListener { (Auth, User) in
+//            self.isLoggedIn = User != nil
+//            self.user = User
+//        }
+//    }
+//    
+//    func logout() {
+//        do {
+//            try Auth.auth().signOut()
+//        } catch {
+//            print("logout failed")
+//        }
+//    }
+//}
 
 #Preview {
     ContentView()

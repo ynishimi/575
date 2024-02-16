@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var loginSuccess: Bool = false
     var body: some View {
         NavigationStack {
             VStack {
@@ -17,16 +19,25 @@ struct LoginView: View {
                     InputView(text: $email,
                               title: "Email Address",
                               placeholder: "name@example.com")
+                        .keyboardType(.emailAddress)
+                        .textContentType(.emailAddress)
+                        .disableAutocorrection(true)
                         .autocapitalization(.none)
+                        
                     InputView(text: $password,
                               title: "Password",
                               placeholder: "Password",
                               isSecureField: true)
-
-                    Button("Log In") {
+                               
+                    Button("Login") {
+                        login()
                     }
                     .disabled(email.isEmpty || password.isEmpty)
                     .fontWeight(.bold)
+                    .fontWeight(.bold)
+                    .navigationDestination(isPresented: $loginSuccess) {
+                        PostView()
+                    }
                     
                     //NavigationLink
                     NavigationLink {
@@ -37,7 +48,19 @@ struct LoginView: View {
                             .fontWeight(.bold)
                         }
                     .navigationTitle("Log In")
+                    .navigationBarBackButtonHidden(true)
                 }
+            }
+        }
+    }
+    
+    private func login() {
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if error != nil {
+                print("login failed")
+            } else {
+                print("login suceeded")
+                loginSuccess = true
             }
         }
     }

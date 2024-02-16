@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct SignUpView: View {
     @State private var username: String = ""
@@ -20,31 +21,39 @@ struct SignUpView: View {
                     InputView(text: $username,
                               title: "User Name",
                               placeholder: "Username")
+                        .keyboardType(.emailAddress)
+                        .textContentType(.emailAddress)
+                        .disableAutocorrection(true)
                         .autocapitalization(.none)
                     InputView(text: $email,
                               title: "Email Address",
                               placeholder: "name@example.com")
                         .autocapitalization(.none)
-                    
                     Section {
                         SecureField("Password", text: $confirmPassword)
                         SecureField("Confirm Password", text: $confirmPassword)
                     } header: {
                         Text("Password")
                     }
-                    
-                    
                     Button("Sign Up") {
+                        signup()
                     }
                     .disabled(email.isEmpty || password.isEmpty)
                     .fontWeight(.bold)
-                
                 }
             }
-
+            .navigationTitle("Sign Up")
         }
     }
-        
+    
+    private func signup() {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if result?.user != nil {
+//                作成成功
+                print("Created a user")
+            }
+        }
+    }
 }
 
 #Preview {
