@@ -12,6 +12,7 @@ struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var loginSuccess: Bool = false
+    @EnvironmentObject var userAuth: UserAuth
     var body: some View {
         NavigationStack {
             VStack {
@@ -61,6 +62,7 @@ struct LoginView: View {
             } else {
                 print("login suceeded")
                 loginSuccess = true
+                userAuth.update()
             }
         }
     }

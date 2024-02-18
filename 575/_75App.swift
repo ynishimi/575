@@ -24,11 +24,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct _75App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
 //    var userAuth = UserAuth()
     var body: some Scene {
         WindowGroup {
             ContentView()
-//                .environmentObject(userAuth)
+                .environmentObject(UserAuth())
         }
     }
 }

@@ -7,12 +7,14 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 struct NewPost: View {
-    @State var newPost: Post = Post(user: "", post1: "", post2: "", post3: "", description: "")
+    @State var newPost: Post = Post(username: "", post1: "", post2: "", post3: "", description: "")
     @FocusState private var post1IsFocused: Bool
     @FocusState private var post2IsFocused: Bool
     @FocusState private var post3IsFocused: Bool
+    @EnvironmentObject var userAuth: UserAuth
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -25,10 +27,13 @@ struct NewPost: View {
                             .onSubmit {
     //                            validate
                             }
+                            
                         TextField("7", text: $newPost.post2)
                             .focused($post2IsFocused)
                         TextField("5", text: $newPost.post3)
                             .focused($post3IsFocused)
+                    } header: {
+                        Text("Post")
                     }
                     Section {
                         Button("Post") {
@@ -43,6 +48,9 @@ struct NewPost: View {
     }
     
     func addPost(post: Post) {
+//        let user = Auth.auth().currentUser
+        let user = userAuth.user
+
         let db = Firestore.firestore()
         let collectionRef = db.collection("posts")
         do {
@@ -52,6 +60,8 @@ struct NewPost: View {
         catch {
             print(error)
         }
+        
+        
     }
 }
 

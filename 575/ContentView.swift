@@ -9,12 +9,12 @@ import SwiftUI
 import FirebaseAuth
 
 struct ContentView: View {
-//    UserAuthクラス
-//    @EnvironmentObject var userAuth: UserAuth
-    
+    private var view: Bool = false
+    @EnvironmentObject var userAuth: UserAuth
     var body: some View {
         Group {
         if Auth.auth().currentUser != nil {
+//            if (view) {
                 PostView()
             }
             else {
@@ -25,17 +25,18 @@ struct ContentView: View {
 }
 
 //  ログイン状況を管理する。@EnvironmentObjectを使う。
-//class UserAuth: ObservableObject {
+class UserAuth: ObservableObject {
 //    @Published var isLoggedIn: Bool = false
-//    @Published var user: User?
-//    
-//    init() {
-//        Auth.auth().addStateDidChangeListener { (Auth, User) in
-//            self.isLoggedIn = User != nil
-//            self.user = User
-//        }
-//    }
-//    
+    @Published var user: User?
+
+    init() {
+        self.user = Auth.auth().currentUser
+    }
+    func update() {
+        self.user = Auth.auth().currentUser
+    }
+}
+
 //    func logout() {
 //        do {
 //            try Auth.auth().signOut()
@@ -43,7 +44,6 @@ struct ContentView: View {
 //            print("logout failed")
 //        }
 //    }
-//}
 
 #Preview {
     ContentView()

@@ -7,12 +7,17 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct SignUpView: View {
     @State private var username: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
+//    @State var uid: String = ""
+    @EnvironmentObject var userAuth: UserAuth
 
     var body: some View {
         NavigationStack {
@@ -51,7 +56,29 @@ struct SignUpView: View {
             if result?.user != nil {
 //                作成成功
                 print("Created a user")
+//                print(result?.user)
+                userAuth.update()
             }
+        }
+    }
+//        ユーザデータを作成
+    private func storeUser() {
+//        if let user = Auth.auth().currentUser {
+//            uid = user.uid
+//        }
+        let currentUser = userAuth.user
+        if currentUser != nil {
+            Firestore.firestore().collection("users")
+                .document(currentUser!.uid)
+                .setData(
+                  [
+                    "uid": currentUser!.uid,
+                    "username": username,
+                    "imageUrl": "",
+                    "createdAt": FieldValue.serverTimestamp(),
+                    "updatedAt": FieldValue.serverTimestamp(),
+                  ]
+                )
         }
     }
 }
